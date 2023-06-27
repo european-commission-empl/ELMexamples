@@ -1,0 +1,31 @@
+  <!--<div style="flex: 0 0 100%; max-width: 100%; display: block; text-align: center;">
+  <p style="font-size: 35px; color: #9C0C35;">-> <!- Organistaion Name -->
+ <!--[$//eup:organization[@id=/eup:europassCredential/cred:issuer/@idref]/eup:prefLabel$]=${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].legalName}
+ </p>
+ </div>
+-->
+ <div style="flex: 0 0 100%; max-width: 100%; padding-top: 3rem;"> <!-- Credentials  Owner-->
+ <p style="text-align: center; font-family: lato; font-weight: 800 !important; font-size: 25pt;" th:text="${credential.credentialSubject.givenName} + ' ' + ${credential.credentialSubject.familyName}">
+ </p>
+ <p style="text-align: center; font-family: lato; font-weight: 500 !important; font-size: 14pt;">
+  was approved for the award of the degree of
+ </p>
+ </div>
+
+ <div style="flex: 0 0 100%; max-width: 100%;">
+ <p style="padding-left: 0.5rem !important; margin: 3rem 1em; text-align: center !important; font-family: lato; font-weight: 800 !important; color: #BA0C2F !important; font-size: 15pt;"  th:text="${credential.displayParameter.title}">
+ </p>
+ </div>
+
+ <div style="flex: 0 0 100%; max-width: 100%;">
+ <p style="padding-left: 0.5rem !important; margin: 3rem 1em; text-align: center !important; font-size: 14pt; font-family: lato; font-weight: 500 !important;">
+ with <span style="font-size: 22pt; font-family: lato; font-weight: 500 !important;" th:text="${credential.credentialSubject.hasClaim[0].provenBy[0].grade.noteLiteral}">
+ </p>
+ </div>
+
+</div>
+
+<div class="main" style="font-style: normal; padding-bottom: 2rem; padding-top: 3rem;">
+<p style="padding-left: 0.5rem !important; margin: 3rem 1em; text-align: center !important; font-family: lato; font-weight: 800 !important; font-size: 14pt;"  th:text="#{startDate}">
+</p>
+</div>

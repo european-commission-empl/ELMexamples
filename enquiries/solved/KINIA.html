@@ -1,0 +1,40 @@
+ <div id="slogan" style="color:#fff; margin-top:130px; text-align:center; font-size:18px">($slogan$)</div>
+
+<div id="title_wrapper" style="margin-top: 140px; text-align: center;">
+			<div class="title_1" style="font-size: 31pt; color:#ea4d41; font-weight: 600; text-transform: uppercase; text-align: center;" th:text="#{certTitle}">($certTitle$)</div>
+			<div class="title_1" style="font-size: 25pt; color:#6d6d6d; font-weight: 400; text-transform: uppercase; margin-top:10px; text-align: center;" th:text="${credential.displayParameter.description}"> [$/eup:europassCredential/eup:description$]</div>
+			<div class="title_1" style="font-size: 30pt; color:#222; text-transform: uppercase; font-weight: 400;  text-align: center; padding-right:20px; padding-left:20px" th:text="${credential.displayParameter.title}"><strong>[$/eup:europassCredential/eup:title$]</strong></div>	
+		</div>
+		<!--<div id="piechart" align="center"><img src="#" width="40" height="40" /></div>-->
+		<div id="form" align="center" style="margin-top:140px; text-align: center">
+			<div class="educator" style="font-family: roboto, 'sans-serif'; font-size: 40pt; color:#6d6d6d; text-align:center" th:text="${credential.credentialSubject.givenName} + ' ' + ${credential.credentialSubject.familyName}"><u>[$/eup:europassCredential/eup:credentialSubject/eup:fullName$]</u></div>
+<!--			<div class="line" style="width:60%; border-bottom: #333 solid 1px; margin: -9px auto 10px auto"></div>-->
+			<div class="educator_details" style="text-transform: uppercase; color: #6D6D6D; font-size: 14pt; font-weight: 600; margin-top: 5px" th:text="${credential.credentialSubject.groupMemberOf[0].prefLabel}">[$/eup:europassCredential/eup:credentialSubject/eup:identifier$]</div>
+			<div class="educator_details" style="font-size: 11pt; color: #ea4d41; margin: 20px auto" th:text="#{issueDate} + ' ' + ${#temporals.format(credential.validFrom, 'dd/MM/yyyy')}">($issueDate$) <strong>[$/eup:europassCredential/cred:validFrom$]</strong> </div>
+			
+		</div>
+
+		<div id="signatures_wrapper" style="padding: 42px; margin-top: 180px" align="center">
+<table width="100%" style="width:100%; text-align: center">
+<tr><td>
+<div class="signature" style="display: inline-block; ">
+				<span>
+					
+					<div class="educator" style="text-transform: uppercase; font-size: 15pt; color:#333; font-weight:600;">Brían Ó Donnchadha</div>
+					<div class="educator" style="font-size: 13pt; color:#6d6d6d;" th:text="#{holDes}">($holDes$)</div>
+				</span>
+			</div>
+
+</td><td>
+<div class="signature" style="display: inline-block; ">
+				<span>
+
+					<div class="educator" style="text-transform: uppercase; font-size: 15pt; color:#333; font-weight:600;">MARIANNE CHECKLEY</div>
+					<div class="educator" style="font-size: 13pt; color:#6d6d6d;" th:text="#{eoDes}">($ceoDes$)</div>
+				</span>
+			</div>
+
+</td>
+</tr>
+</table>		
+		</div>

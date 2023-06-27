@@ -1,0 +1,104 @@
+<!-- NEW QUESTIONS TO SAYOS - PLEASE DELETE LINE WHEN SOLVED -->
+<p>Multilingual credentials seem to have a single preview, not responsive to content language change.</p>
+<p>th:text="${#temporals.format(credential.issued, 'dd/MM/yyyy')}" shows an empty result. This, I believe is because we generate the summary image of the credential <strong>before</strong> sealing. Is that correct? If so, there is no point putting this into the default HTML code. We are deprecating issued anyway, remove. </p>
+
+
+<!-- NEED TO CONVERT XPATH TO THYMELEAF FOR PROPERTIES: -->
+
+<!-- TO BE CHECKED BY ILDIKO-->
+<p>Activity (Specification) Title (influencing Achievement Claim). -> ${credential.credentialSubject.hasClaim[0].influencedBy[0].specifiedBy.title}</p>
+<p><strong>(see below)</strong>ECTS credit points[$/eup:europassCredential/eup:learningSpecificationReferences/eup:qualification/eup:hasECTSCreditPoints$]</p>
+<p>ECTS credit points do not exist anymore instead we have creditPoints inside LearningSpecifications/Qualifications, this conatin framework and points</p>
+<p>Credit Point Framework -> ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework} </p>
+<p>Credit Point points -> ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].point} </p>
+<!-- code below was used in testing and contains all previous fields, was working
+    <h4> Claim title </h4>
+<p th:text="${credential.credentialSubject.hasClaim[0].title}" />
+
+<h4> Claim spec title </h4>
+<p th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.title}" />
+
+<h4> Specified by activity spec title </h4>
+<p th:text="${credential.credentialSubject.hasClaim[0].influencedBy[0].specifiedBy.title}"/>
+
+<h4> Credit Point framework </h4>
+<p th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework}"/>
+
+<h4> Credit Point points </h4>
+<p th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].point}"/>
+-->
+<!-- TESTED AND WORKING -->
+<h2> THYMELEAF REFERENCES CORRESPONDING TO CREDENTIAL METADATA </h2>
+		<table style="border-spacing:1; border:#cdcdcd; border-width:0.5px; border-style:solid; width:100%; cellspacing:1; cellpadding:1;">
+		<thead>
+			<th style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">
+				<strong>Property reference</strong>
+			</th>
+			<th style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">
+				<strong>Thymeleaf code</strong>
+			</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Credential issuer's official name</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.issuer.legalName}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Claim awarding body's official name</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].legalName}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Identifier is an Array, but always has at maximum 1 element when issued from OCB</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.identifier[0]}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">National Identifier spatial</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.nationalID.spatial}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">National Identifier Notation (ID number)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.nationalID.notation}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Identifier scheme Name</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.identifier[0].schemeName}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Identifier notation (ID number)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.identifier[0].notation}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Other Identifier (with Scheme name + ID)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.identifier[0].schemeName} + ' ' + ${credential.credentialSubject.identifier[0].notation}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Group member of</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.groupMemberOf[0].prefLabel}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Start (and End) date of Activity (formatted)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${#temporals.format(credential.credentialSubject.hasClaim[0].temporal[0].start(end)Date, 'dd/MM/yyyy')}</td>
+			</tr>
+<!-- These are correct but have a bug in current version, will be solved in the future -->
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Organisation alt label</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.issuer.altLabel}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Activity directed by (organisation's legal name)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].directedBy[0].legalName}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Achievement proven by (Assessment grade)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].provenBy[0].grade.noteLiteral}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Sub-Achievement proven by (Assessment grade)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].hasPart[0].provenBy[0].grade.noteLiteral}</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Sub-Achievement proven by Assessment -> Sub-Assessment (Grade)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].hasPart[0].provenBy[0].hasPart[0].grade.noteLiteral}</td>
+			</tr>
+		</tbody>
+		</table>

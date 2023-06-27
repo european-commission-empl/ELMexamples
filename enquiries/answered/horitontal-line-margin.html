@@ -1,0 +1,15 @@
+ <p>Is there any way to bring the horizontal line closer to the paragraph above it (maybe using span)?</p>
+<p style="text-align: center !important; font-weight: 300; font-style: italic; color: #004494 !important; font-size: 36px;">Ana Andromeda<!--th:text="${credential.credentialSubject.givenName} + ' ' + ${credential.credentialSubject.familyName}"--></p>
+<p style="margin-left: 15%; width: 70%; border-bottom:0.25px solid #cdcdcd;"/><br>
+
+<p><strong> a lot of ways, depends on specific CSS scenario, for this case, you can use margin-bottom:0, margin-top:0 and height:0px to do it </strong></p>
+
+<p style="margin-bottom:0;text-align: center !important; font-weight: 300; font-style: italic; color: #004494 !important; font-size: 36px;">Ana Andromeda<!--th:text="${credential.credentialSubject.givenName} + ' ' + ${credential.credentialSubject.familyName}"--></p>
+<p style="margin-top:0;height:0;margin-left: 15%; width: 70%; border-bottom:0.25px solid #cdcdcd;"/><br>
+
+
+
+<p><strong> span can be used but you'll lose the text-align:center as it is a inline and not a block element https://www.w3schools.com/html/html_blocks.asp </strong></p>
+
+<span style="margin-bottom:0;text-align: center !important; font-weight: 300; font-style: italic; color: #004494 !important; font-size: 36px;">Ana Andromeda<!--th:text="${credential.credentialSubject.givenName} + ' ' + ${credential.credentialSubject.familyName}"--></span>
+<p style="margin-top:0;height:0;margin-left: 15%; width: 70%; border-bottom:0.25px solid #cdcdcd;"/><br>
