@@ -176,6 +176,11 @@
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
 			</tr>
 			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">More information</br> Additional note</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].specifiedBy.additionalNote[0].noteLiteral}</br>${credential.credentialSubject.hasClaim[0].specifiedBy.additionalNote[1].subject} + ': ' + ${credential.credentialSubject.hasClaim[0].specifiedBy.additionalNote[1].noteLiteral}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">e.g. [$/eup:europassCredential/eup:learningActivitySpecificationReferences/eup:learningActivitySpecification/eup:additionalNote[0]$]</td>
+			</tr>
+			<tr>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Unique Credential identifier</br>Alternative credential identifier (Scheme: ID number)</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.id}</br>${credential.identifier[0].schemeName} + ': ' + ${credential.identifier[0].notation}</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">[$/eup:europassCredential/@id$]</td>
