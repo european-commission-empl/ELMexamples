@@ -2,40 +2,32 @@
 <!-- 
 	<p>Multilingual credentials seem to have a single preview, not responsive to content language change.- case solved </p> 
 	<p>th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.volumeOfLearning}" should display the provided value in hours (not months) - currently the EDC Issuer has a bug, as such currently we do not recomment referencing this property in the HTML code.</p> 
+	<p>Is it possible to reference the https://publications.europa.eu/resource/authority/snb/education-credit/6fcec5c5af concept's altLabel (i.e. "ECTS" instead of "European Credit Transfer System")? ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework.altLabel} doesn't work :-)</p>
 -->
 <p>
 </p>
 
-<h2>USEFUL THYMELEAF REFERENCES IN CUSTOM HTML CODE</h2>
+<h2>MOST FREQUENTLY USED THYMELEAF REFERENCES IN CUSTOM HTML CODE</h2>
 <p>
 	<ul>
+		<li><strong>Logo of the credential's claim's awarding body</strong>: ${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].logo}</li>
+		<li><strong>Legal name of the credential's claim's awarding body</strong>: ${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].legalName}</li>
 		<li><strong>Credential title</strong>: ${credential.displayParameter.title}</li>
+		<li><strong>Credential holder's name</strong>: ${credential.credentialSubject.givenName} + ' ' + ${credential.credentialSubject.familyName}</li>
+		<li><strong>Credential holder's date of birth in yyyy.MM.dd format</strong>: ${#temporals.format(credential.credentialSubject.dateOfBirth, 'yyyy.MM.dd')}</li>
+		<li><strong>Credential holder's place of birth</strong>: ${credential.credentialSubject.placeOfBirth.address[0].fullAddress.noteLiteral} + ', ' + ${credential.credentialSubject.placeOfBirth.address[0].countryCode.prefLabel}</li>
+		<li><strong>Credential's description (e.g. "has successfully completed an online course")</strong>: ${credential.displayParameter.description}</li>
+		<li><strong>Claim's official title (e.g. a Learning Achievement or a Learning Activity)</strong>: ${credential.credentialSubject.hasClaim[0].title}</li>
 		<li><strong>Credential valid from date in dd/MM/yyyy format</strong>: ${#temporals.format(credential.validFrom, 'dd/MM/yyyy')} (note that the credential's <strong>issue date</strong> cannot be displayed on EDC summary image)</li>
-		<li>th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.volumeOfLearning}" should display the provided value in hours (not months) - currently the EDC Issuer has a bug, as such currently we do not recomment referencing this property in the HTML code.
-		</li>
 	</ul>
 </p>
 
 <!-- NEED TO CONVERT XPATH TO THYMELEAF FOR PROPERTIES: -->
 
 <!-- TO BE CHECKED BY ILDIKO-->
-<p>Activity (Specification) Title (influencing Achievement Claim). -> ${credential.credentialSubject.hasClaim[0].influencedBy[0].specifiedBy.title}</p>
-<p><strong>(see below)</strong>ECTS credit points[$/eup:europassCredential/eup:learningSpecificationReferences/eup:qualification/eup:hasECTSCreditPoints$] was [$/eup:europassCredential/eup:learningSpecificationReferences/eup:qualification/eup:hasECTSCreditPoints$]</p>
-<p>ECTS credit points do not exist anymore instead we have creditPoints inside LearningSpecifications/Qualifications, this conatin framework and points</p>
-<p>Credit Point Framework -> ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework} </p>
-<p>Credit Point points -> ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].point} </p>
-<!-- code below was used in testing and contains all previous fields, was working
-<h4> Specified by activity spec title </h4>
-<p th:text="${credential.credentialSubject.hasClaim[0].influencedBy[0].specifiedBy.title}"/>
 
-<h4> Credit Point framework </h4>
-<p th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework}"/>
-
-<h4> Credit Point points </h4>
-<p th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].point}"/>
--->
 <!-- TESTED AND WORKING -->
-<h2> THYMELEAF REFERENCES CORRESPONDING TO CREDENTIAL METADATA </h2>
+<h2> THYMELEAF (and old XPATH) REFERENCES CORRESPONDING TO CREDENTIAL METADATA </h2>
 		<table style="border-spacing:1; border:#cdcdcd; border-width:0.5px; border-style:solid; width:100%; cellspacing:1; cellpadding:1;">
 		<thead>
 			<th style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">
@@ -80,8 +72,8 @@
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">[$/eup:europassCredential/eup:credentialSubject/eup:achievements/eup:learningAchievement/eup:title$]<br>[$/eup:europassCredential/eup:credentialSubject/eup:activities/eup:activity/eup:title$]</td>
 			</tr>
 			<tr>
-				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Title of Learning Activity leading to a Learning Achievement (that is a high level claim)</td>
-				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].influencedBy[0].title}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Title of Learning Activity leading to a Learning Achievement</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].influencedBy[0].title}</br>${credential.credentialSubject.hasClaim[0].influencedBy[0].specifiedBy.title}</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
 			<tr>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Title of a sub-claim (be it a sub-achievement, sub-activity, sub-ssessment or sub-entitlement)</td>
@@ -94,8 +86,28 @@
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
 			</tr>
 			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">ECTS credit points</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].point} + ' ' + ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">[$/eup:europassCredential/eup:learningSpecificationReferences/eup:qualification/eup:hasECTSCreditPoints$]</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">EQF Level / NQF Level</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].specifiedBy.eqfLevel.prefLabel} + ' / ' + ${credential.credentialSubject.hasClaim[0].specifiedBy.nqfLevel[0].prefLabel}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
+			</tr>
+			<tr>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Type of a high level Claim Learning Achievement (BYOL, or use <a href="https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://data.europa.eu/snb/learning-opportunity/25831c2">Learning opportunity type list</a>)</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].specifiedBy.dcType[0].prefLabel}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Credential holder's date of birth</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.dateOfBirth}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">[$/eup:europassCredential/eup:credentialSubject/eup:dateOfBirth$]</td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Credential holder's place of birth (Full address, Country)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.placeOfBirth.address[0].fullAddress.noteLiteral} + ', ' + ${credential.credentialSubject.placeOfBirth.address[0].countryCode.prefLabel}</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
 			</tr>
 			<tr>
@@ -162,6 +174,11 @@
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Sub-Achievement proven by Assessment -> Sub-Assessment (Grade)</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.credentialSubject.hasClaim[0].hasPart[0].provenBy[0].hasPart[0].grade.noteLiteral}</td>
 				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;"></td>
+			</tr>
+			<tr>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top; min-width: 300px;">Unique Credential identifier</br>Alternative credential identifier (Scheme: ID number)</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">${credential.id}</br>${credential.identifier[0].schemeName} + ': ' + ${credential.identifier[0].notation}</td>
+				<td style="border-spacing:0; border:#cdcdcd; border-width:0.5px; border-style:solid; width:50%; cellspacing:1; cellpadding:1; font-size: 14pt; text-align: left; vertical-align:top;">[$/eup:europassCredential/@id$]</td>
 			</tr>
 <!-- These are correct but have a bug in current version, will be solved in the future -->
 			<tr>
