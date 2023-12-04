@@ -11,7 +11,7 @@
         />
         <br/>
 <p style="margin-top: 6rem; text-align: center !important; font-weight: 700; font-family: sans-serif; color: #404040 !important; font-size: 36px;" th:text="${credential.displayParameter.title}"></p><br>
-<p style="text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;" th:text="#{awardedTo}"></p><br>
+<p style="text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;" th:text="#{diploma.msg.awardedTo}"></p><br>
 <p style="margin-bottom:0; text-align: center !important; font-weight: 300; font-style: italic; color: #004494 !important; font-size: 36px;" th:with="
            caseFullName = ${credential.credentialSubject.fullName != null and !#strings.isEmpty(credential.credentialSubject.fullName)},
            caseGivenName = ${credential.credentialSubject.givenName != null and !#strings.isEmpty(credential.credentialSubject.givenName)},
@@ -26,7 +26,7 @@
            caseNationalID ? credential.credentialSubject.nationalID : 'Anonymous'
            }"></p>
 <p style="margin-top:0; height:0; margin-left: 15%; width: 70%; border-bottom:1px solid #cdcdcd;"/></p><br>
-<p style="margin-bottom:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;" th:text="#{for}"></p>
+<p style="margin-bottom:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;" th:text="#{diploma.msg.for}"></p>
 <p style="margin-top:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;" th:text="${credential.displayParameter.description}"></p>
     </div>
 </div>
@@ -34,7 +34,7 @@
 -->
 
 <!--Custom EDC summary image look and feel:-->
-<div style="border: 1em solid rgb(0,68,148)"/>
+<div style="border: 1em solid rgb(0,68,148); border-radius: 1em;"/>
 <div style="font-style: normal; padding-bottom: 2rem; padding-top: 10rem;">
     <div
             style="flex: 0 0 100%; max-width: 100%; display: block; text-align: center;"
@@ -49,7 +49,7 @@
         />
         <br/>
 <p style="margin-top: 6rem; text-align: center !important; font-weight: 700; font-family: sans-serif; color: #404040 !important; font-size: 36px;">Title of Credential<!--th:text="${credential.displayParameter.title}"--></p><br>
-<p style="text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;">awarded to<!--th:text="#{awardedTo}"--></p><br>
+<p style="text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;">awarded to<!--th:text="#{diploma.msg.awardedTo}"--></p><br>
 <p style="margin-bottom:0; text-align: center !important; font-weight: 300; font-style: italic; color: #004494 !important; font-size: 36px;">Ana Andromeda<!--th:with="
            caseFullName = ${credential.credentialSubject.fullName != null and !#strings.isEmpty(credential.credentialSubject.fullName)},
            caseGivenName = ${credential.credentialSubject.givenName != null and !#strings.isEmpty(credential.credentialSubject.givenName)},
@@ -64,8 +64,8 @@
            caseNationalID ? credential.credentialSubject.nationalID : 'Anonymous'
            }"--></p>
 <p style="margin-top:0; height:0; margin-left: 15%; width: 70%; border-bottom:1px solid #cdcdcd;"/></p><br>
-<p style="margin-bottom:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;"><br>for<!--th:text="#{for}"--></p>
-<p style="margin-top:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;">the achievement something (i.e. credential description)<!--th:text="${credential.displayParameter.description}"--></p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p style="margin-bottom:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;"><br>for<!--th:text="#{diploma.msg.for}"--></p>
+<p style="margin-top:0; text-align: center !important; font-weight: 300; font-family: sans-serif; color: #404040 !important; font-size: 20px;">the achievement of something (i.e. credential description)<!--th:text="${credential.displayParameter.description}"--></p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
 </div>
 </div>

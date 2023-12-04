@@ -1,0 +1,181 @@
+<!-- 
+<div style="margin-top: 180px; padding-right:80px; padding-left:80px; text-align: center;">
+    <p style="font-size: 10pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="#{cert}">
+    </p>
+    <p style="font-size: 14pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="${credential.displayParameter.title}">
+    </p><br/>
+    <p style="font-size: 12pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.dcType[0].prefLabel}">
+    </p>
+    <p style="font-size: 8pt; text-align: center; font-family: sans-serif;" th:text="#{filler1}">
+    </p><br/><br/><br/>
+    <p style="font-size: 12pt; font-weight: 700; font-family: sans-serif;" th:text="#{filler2}">
+    </p>
+    <div style="border-style:double; border-width:5px; width:100%; font-size: 14pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="${credential.credentialSubject.hasClaim[0].title}">
+    </div>
+    <p>&ensp;</p>
+    <span style="text-align: left; font-family: sans-serif; font-weight:bold;" th:text="#{filler3}"></span> <span th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.educationSubject[0]}"></span><br/>
+    <p style="text-align: center; font-weight: 700; font-family: sans-serif;" th:text="#{filler4}">
+    </p>
+    <table width="100%" style="width:100%; text-align: left">
+        <colgroup>
+            <col span="1" style="width: 50%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+    <tbody>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{givenName}"></span> <span th:text="${credential.credentialSubject.givenName}"></span><br/>
+        </td>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{familyName}"></span> <span th:text="${credential.credentialSubject.familyName}"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>&ensp;</td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{placeOfBirth}"></span> <span th:text="${credential.credentialSubject.placeOfBirth.address[0].countryCode.prefLabel}"></span>
+        </td>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{dateOfBirth}"></span> <span th:text="${#temporals.format(credential.credentialSubject.dateOfBirth, 'dd/MM/yyyy')}"></span>
+        </td>
+    </tr>
+    </tbody>
+    </table>		
+    <p style="text-align: left; font-weight: 700; font-family: sans-serif;" th:text="#{obtainedFrom}">
+    </p>
+    <p style="text-align: center; font-family: sans-serif;" th:text="${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].legalName}">
+    </p>
+    <table width="100%" style="width:100%; text-align: left">
+        <colgroup>
+            <col span="1" style="width: 50%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+    <tbody>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{address}"></span> <span th:text="${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].location[0].address[0].fullAddress}"></span><br/>
+        </td>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].identifier[0].schemeName}"></span> <span th:text="${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].identifier[0].notation}"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>&ensp;</td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{validFrom}"></span> <span th:text="${#temporals.format(credential.validFrom, 'dd/MM/yyyy')}"></span>
+        </td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>&ensp;</td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="${credential.identifier[0].schemeName}"></span> <span th:text="${credential.identifier[0].notation}"></span>
+        </td>
+        <td>&ensp;</td>
+    </tr>
+    </tbody>
+    </table>		
+<p style="margin-left: 15%;width: 70%; border-bottom:0.25px solid #cdcdcd;"/><br/><br/>
+    <p style="font-size: 8pt; text-align: center; font-family: sans-serif;" th:text="#{footnote}">
+    </p>
+</div> 
+-->
+
+<div style="margin-top: 140px; padding-right:100px; padding-left:100px; text-align: center;">
+    <p style="font-size: 10pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="#{cert}">CERTIFICATO DI
+    </p>
+    <p style="font-size: 14pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="${credential.displayParameter.title}">QUALIFICA PROFESSIONALE
+    </p><br/>
+    <p style="font-size: 12pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.dcType[0].prefLabel}">FORMAZIONE PROFESSIONALE
+    </p>
+    <p style="font-size: 8pt; text-align: center; font-family: sans-serif;" th:text="#{filler1}">Ai sensi del DLgs. n. 226/05 e della legge regionale 63 del 13/04/1995 e s.m.i.
+    </p><br/><br/><br/>
+    <p style="font-size: 12pt; font-weight: 700; font-family: sans-serif;" th:text="#{filler2}">DENOMINAZIONE
+    </p>
+    <div style="border-style:double; border-width:5px; width:100%; font-size: 14pt; font-weight: 700; text-align: center; font-family: sans-serif;" th:text="${credential.credentialSubject.hasClaim[0].title}">OPERATORE DELLA RISTORAZIONE - PREPARAZIONE DEGLI ALIMENTI E ALLESTIMENTO PIATTI
+    </div>
+    <p>&ensp;</p>
+    <span style="text-align: left; font-family: sans-serif; font-weight:bold;" th:text="#{filler3}"><strong>Area professionale:</strong></span> <span th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.educationSubject[0]}">TURISMO E SPORT</span><br/>
+    <p style="text-align: center; font-weight: 700; font-family: sans-serif;" th:text="#{filler4}">Conferito a:
+    </p>
+    <table width="100%" style="width:100%; text-align: left">
+        <colgroup>
+            <col span="1" style="width: 50%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+    <tbody>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{givenName}"><strong>NOME:</strong></span> <span th:text="${credential.credentialSubject.givenName}">STEFANIA</span><br/>
+        </td>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{familyName}"><strong>COGNOME:</strong></span> <span th:text="${credential.credentialSubject.familyName}">MANZO</span>
+        </td>
+    </tr>
+    <tr>
+        <td>&ensp;</td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{placeOfBirth}"><strong>nato/a a:</strong></span> <span th:text="${credential.credentialSubject.placeOfBirth.address[0].countryCode.prefLabel}">CUNEO (CN)</span>
+        </td>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{dateOfBirth}"><strong>il:</strong></span> <span th:text="${#temporals.format(credential.credentialSubject.dateOfBirth, 'dd/MM/yyyy')}">28/11/1975</span>
+        </td>
+    </tr>
+    </tbody>
+    </table>		
+    <p style="text-align: left; font-weight: 700; font-family: sans-serif;" th:text="#{obtainedFrom}">Conseguito presso:
+    </p>
+    <p style="text-align: center; font-family: sans-serif;" th:text="${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].legalName}">CASA DI CARITA' - ISTITUTO PACCHIOTTI
+    </p>
+    <table width="100%" style="width:100%; text-align: left">
+        <colgroup>
+            <col span="1" style="width: 50%;">
+            <col span="1" style="width: 50%;">
+        </colgroup>
+    <tbody>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{address}"><strong>sede:</strong></span> <span th:text="${credential.credentialSubject.hasClaim[0].awardedBy.awardingBody[0].location[0].address[0].fullAddress}">VIA PACCHIOTTI 51 - GIAVENO (TO)</span><br/>
+        </td>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="${credential.credentialSubject.hasClaim[1].awardedBy.awardingBody[0].identifier[0].schemeName}"><strong>Certificato accreditamento Regionale</strong></span> <span th:text="${credential.credentialSubject.hasClaim[1].awardedBy.awardingBody[0].identifier[0].notation}">0019/F2</span>
+        </td>
+    </tr>
+    <tr>
+        <td>&ensp;</td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="#{validFrom}"><strong>in data:</strong></span> <span th:text="${#temporals.format(credential.validFrom, 'dd/MM/yyyy')}">16/05/2023</span>
+        </td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>&ensp;</td>
+        <td>&ensp;</td>
+    </tr>
+    <tr>
+        <td>
+        <span style="text-align: center; font-family: sans-serif; font-weight:bold;" th:text="${credential.identifier[0].schemeName}"><strong>numero:</strong></span> <span th:text="${credential.identifier[0].notation}">A-5466 / 2023</span>
+        </td>
+        <td>&ensp;</td>
+    </tr>
+    </tbody>
+    </table>		
+<p style="margin-left: 15%;width: 70%; border-bottom:0.25px solid #cdcdcd;"/><br/><br/>
+    <p style="font-size: 8pt; text-align: center; font-family: sans-serif;" th:text="#{footnote}">Il presente certificato non può essere prodotto agli organi della pubblica amministrazione o ai privati gestori di pubblici servizi
+    </p>
+</div>
