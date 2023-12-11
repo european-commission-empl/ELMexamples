@@ -3,6 +3,11 @@
 	<p>Multilingual credentials seem to have a single preview, not responsive to content language change.- case solved </p> 
 	<p>th:text="${credential.credentialSubject.hasClaim[0].specifiedBy.volumeOfLearning}" should display the provided value in hours (not months) - currently the EDC Issuer has a bug, as such currently we do not recomment referencing this property in the HTML code.</p> 
 	<p>Is it possible to reference the https://publications.europa.eu/resource/authority/snb/education-credit/6fcec5c5af concept's altLabel (i.e. "ECTS" instead of "European Credit Transfer System")? ${credential.credentialSubject.hasClaim[0].specifiedBy.creditPoint[0].framework.altLabel} doesn't work :-)</p>
+	<p>In te XML days we used to be able to build a custom HTML template that referenced maximum number of "things" (e.g. list Learning Activity Claim titles) and when a batch of customised credentials was issued, some of which may have had 8 Learning Activities, others 10, the code worked on all of them and the exact number of titles was displayed on each credential summary image. Now with JSON this doesn't work anymore. Could we make something like the below solution work?  
+		<ul th:each="thing : ${thing}">
+    		<li th:text="${thing}"></li>
+		</ul>
+	</p>
 -->
 <p>
 </p>
